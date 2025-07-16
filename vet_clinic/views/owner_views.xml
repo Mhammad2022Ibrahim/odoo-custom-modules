@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_pet_owner_list" model="ir.ui.view">
+        <field name="name">pet.owner.list</field>
+        <field name="model">pet.owner</field>
+        <field name="arch" type="xml">
+            <list string="Owners">
+                <field name="name"/>
+                <field name="address" optional="hide"/>
+                <field name="phone" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_pet_owner_form" model="ir.ui.view">
+        <field name="name">pet.owner.form</field>
+        <field name="model">pet.owner</field>
+        <field name="arch" type="xml">
+            <form string="Owner">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <!--                            <field name="parent" invisible="not is_kid" required="is_kid"/>-->
+                            <field name="phone"/>
+                            <!--                            <field name="weight" readonly="gender == 'female'"/>-->
+                        </group>
+                        <group>
+                            <field name="address"/>
+                            <field name="his_pet" widget="many2many_tags"/>
+                            <!--                            <field name="tag_ids" widget="many2many_tags"/>-->
+                            <!--                            <field name="product_ids" widget="many2many_tags"/>-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products">
+
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pet_owner_search" model="ir.ui.view">
+        <field name="name">pet.owner.search</field>
+        <field name="model">pet.owner</field>
+        <field name="arch" type="xml">
+            <search string="Owners">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <!--                <field name="parent"/>-->
+                <!--                <field name="is_kid"/>-->
+                <!--                <filter string="Male" name="male_patient" domain="[('gender', '=', 'male')]"/>-->
+                <!--                <filter string="Female" name="female_patient" domain="[('gender', '=', 'female')]"/>-->
+                <!--                <separator/> &lt;!&ndash;this will do an and operation between filter for example if female and is kid, without separator it will be an or operation&ndash;&gt;-->
+                <!--                <filter string="kid" name="kid_patient" domain="[('is_kid', '=', 'True')]"/>-->
+                <!--                        help="Show only opportunity" groups="crm.group_use_lead"/>-->
+                <!--group by-->
+                <!--                <group expand="1" string="Group By">-->
+                <!--                    <filter string="Tag" name="group_by_tag" context="{'group_by': 'tag_ids'}"/>-->
+                <!--                </group>-->
+
+                <!--searchpannel-->
+                <!--                <searchpanel>-->
+                <!--                    <field name="address" string="Address"-->
+                <!--                           enable_counters="1"/>&lt;!&ndash;groups="base.group_multi_company" icon="fa-building"&ndash;&gt;-->
+                <!--                </searchpanel>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="action_pet_owner" model="ir.actions.act_window">
+        <field name="name">Owner</field>
+        <field name="res_model">pet.owner</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_pet_owner_search"/>
+        <field name="context">{'search_default_group_by_tag':1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new Owner
+            </p>
+        </field>
+    </record>
+
+</odoo>

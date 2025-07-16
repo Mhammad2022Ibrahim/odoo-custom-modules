@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <menuitem id="menu_vet_clinic_root"
+              name="VC"
+              web_icon="vet_clinic,static/description/modules.png"
+              sequence="35"/>
+
+    <menuitem id="menu_front_desk_vet"
+              name="Front Desk"
+              parent="menu_vet_clinic_root"/>
+
+    <menuitem id="menu_owners"
+              name="Owners"
+              parent="menu_front_desk_vet"
+              action="action_pet_owner"/>
+
+    <menuitem id="menu_pet"
+              name="Pets"
+              parent="menu_front_desk_vet"
+              action="action_pet_pet"/>
+
+    <menuitem id="menu_appointment_pet"
+              name="Appointments"
+              parent="menu_front_desk_vet"
+              action="action_vet_appointment"/>
+
+    <menuitem id="menu_vet_appointment_line"
+              name="Appointment Lines"
+              parent="menu_front_desk_vet"
+              action="action_vet_appointment_line"/>
+
+    <menuitem id="menu_product"
+              name="Products"
+              sequence="100"
+              parent="menu_vet_clinic_root"/>
+
+    <menuitem id="menu_vaccine_pet"
+              name="Vaccines"
+              parent="menu_product"
+              action="action_pet_vaccine"/>
+
+
+    <!--    groups="om_hospital.group_hospital_doctor"-->
+
+    <!--    <menuitem id="menu_billing"-->
+    <!--              name="Billing"-->
+    <!--              parent="menu_hospital_root"/>-->
+
+    <!--    <menuitem id="menu_patients_readonly"-->
+    <!--              name="Patients View"-->
+    <!--              parent="menu_front_desk"-->
+    <!--              action="action_hospital_patient_readonly"/>-->
+
+
+    <!--    <menuitem id="menu_configuration"-->
+    <!--              name="Configuration"-->
+    <!--              groups="om_hospital.group_hospital_doctor"-->
+    <!--              sequence="100"-->
+    <!--              parent="menu_hospital_root"/>-->
+
+    <!--    <menuitem id="menu_patient_tag"-->
+    <!--              name="Tags"-->
+    <!--              parent="menu_configuration"-->
+    <!--              action="action_patient_tag"/>-->
+
+    <!--    <menuitem id="menu_hms_invoicing"-->
+    <!--              name="Invoice"-->
+    <!--              parent="menu_billing"-->
+    <!--              action="account.action_move_out_invoice"/> #this action we get it from action from the menu of invoicing from odoo by click on action from debuging and get the external ID-->
+
+    <!--    <menuitem id="menu_hms_payment"-->
+    <!--              name="Payment"-->
+    <!--              parent="menu_billing"-->
+    <!--              action="account.action_account_payments"/>-->
+
+</odoo>

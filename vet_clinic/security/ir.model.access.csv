@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pet_owner,access.pet.owner,model_pet_owner,vet_clinic.group_vet_receptionist,1,1,1,1
+access_pet_pet,access.pet.pet,model_pet_pet,vet_clinic.group_vet_receptionist,1,1,1,1
+access_pet_vaccine_receptionist,access.pet.vaccine.receptionist,model_pet_vaccine,vet_clinic.group_vet_receptionist,1,1,1,0
+access_pet_vaccine_doctors,access.pet.vaccine.doctors,model_pet_vaccine,vet_clinic.group_vet_doctor,1,1,1,1
+access_vet_appointment,access.vet.appointment,model_vet_appointment,vet_clinic.group_vet_receptionist,1,1,1,1
+access_vet_appointment_line_doctors,access.vet.appointment.line.doctors,model_vet_appointment_line,vet_clinic.group_vet_doctor,1,1,1,1
+access_vet_appointment_line_receptionist,access.vet.appointment.line.receptionist,model_vet_appointment_line,vet_clinic.group_vet_receptionist,1,0,1,0
+

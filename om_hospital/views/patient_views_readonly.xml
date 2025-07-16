@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_hospital_patient_readonly_list" model="ir.ui.view">
+        <field name="name">hospital.patient.readonly.list</field>
+        <field name="model">hospital.patient</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <list string="Patients" create="false" delete="false" edit="false">
+                <field name="name"/>
+                <field name="date_of_birth" optional="show"/>
+                <field name="gender" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_hospital_patient_readonly_form" model="ir.ui.view">
+        <field name="name">hospital.patient.readonly.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient" create="false" delete="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_of_birth"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hospital_patient_readonly_search" model="ir.ui.view">
+        <field name="name">hospital.patient.readonly.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Patients">
+                <field name="name"/>
+                <field name="date_of_birth"/>
+                <group expand="1" string="Group By">
+                    <filter string="Tag" name="group_by_tag" context="{'group_by': 'tag_ids'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hospital_patient_readonly" model="ir.actions.act_window">
+        <field name="name">View Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_hospital_patient_readonly_search"/>
+        <field name="view_ids" eval="[
+        Command.clear(),
+        Command.create({
+            'view_mode': 'list',
+            'sequence': 1,
+            'view_id': ref('view_hospital_patient_readonly_list')
+        }),
+        Command.create({
+            'view_mode': 'form',
+            'sequence': 2,
+            'view_id': ref('view_hospital_patient_readonly_form')
+        }),
+    ]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new Patient
+            </p>
+        </field>
+    </record>
+
+</odoo>

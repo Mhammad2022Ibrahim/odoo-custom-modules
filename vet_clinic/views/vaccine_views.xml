@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_pet_vaccine_list" model="ir.ui.view">
+        <field name="name">pet.vaccine.list</field>
+        <field name="model">pet.vaccine</field>
+        <field name="arch" type="xml">
+            <list string="Vaccines">
+                <field name="code"/>
+                <field name="vaccine_type"/>
+                <field name="pet_id" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_pet_vaccine_form" model="ir.ui.view">
+        <field name="name">pet.vaccine.form</field>
+        <field name="model">pet.vaccine</field>
+        <field name="arch" type="xml">
+            <form string="Vaccine">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="vaccine_type"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="pet_id"/>
+                            <!--                            <field name="vaccine_ids" widget="many2many_tags"/>-->
+                            <field name="vaccine_date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pet_vaccine_search" model="ir.ui.view">
+        <field name="name">pet.vaccine.search</field>
+        <field name="model">pet.vaccine</field>
+        <field name="arch" type="xml">
+            <search string="Vaccines">
+                <field name="vaccine_type"/>
+                <field name="code"/>
+                <field name="pet_id"/>
+                <!--                <field name="parent"/>-->
+                <!--                <field name="is_kid"/>-->
+                <!--                <filter string="Male" name="male_patient" domain="[('gender', '=', 'male')]"/>-->
+                <!--                <filter string="Female" name="female_patient" domain="[('gender', '=', 'female')]"/>-->
+                <!--                <separator/> &lt;!&ndash;this will do an and operation between filter for example if female and is kid, without separator it will be an or operation&ndash;&gt;-->
+                <!--                <filter string="kid" name="kid_patient" domain="[('is_kid', '=', 'True')]"/>-->
+                <!--                        help="Show only opportunity" groups="crm.group_use_lead"/>-->
+                <!--group by-->
+                <!--                <group expand="1" string="Group By">-->
+                <!--                    <filter string="Tag" name="group_by_tag" context="{'group_by': 'tag_ids'}"/>-->
+                <!--                </group>-->
+
+                <!--searchpannel-->
+                <searchpanel>
+                    <field name="pet_id" string="Pet"
+                           enable_counters="1"/><!--groups="base.group_multi_company" icon="fa-building"-->
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_pet_vaccine" model="ir.actions.act_window">
+        <field name="name">Vaccine</field>
+        <field name="res_model">pet.vaccine</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_pet_vaccine_search"/>
+        <field name="context">{'search_default_group_by_tag':1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new Vaccine
+            </p>
+        </field>
+    </record>
+
+</odoo>
